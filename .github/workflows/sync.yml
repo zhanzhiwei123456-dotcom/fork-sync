@@ -1,0 +1,47 @@
+name: Sync Fork Repos
+
+on:
+  schedule:
+    # 每天早上8点和晚上8点自动同步
+    - cron: '0 0,12 * * *'
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync banana-slides
+        uses: repo-sync/github-sync-pulls@v3
+        with:
+          source_repo: "Anionex/banana-slides"
+          source_branch: "main"
+          target_repo: "zhanzhiwei123456-dotcom/banana-slides"
+          target_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync cfnew
+        uses: repo-sync/github-sync-pulls@v3
+        with:
+          source_repo: "byJoey/cfnew"
+          source_branch: "main"
+          target_repo: "zhanzhiwei123456-dotcom/cfnew"
+          target_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync newsnow
+        uses: repo-sync/github-sync-pulls@v3
+        with:
+          source_repo: "ourongxing/newsnow"
+          source_branch: "main"
+          target_repo: "zhanzhiwei123456-dotcom/newsnow"
+          target_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync pdfcraft
+        uses: repo-sync/github-sync-pulls@v3
+        with:
+          source_repo: "PDFCraftTool/pdfcraft"
+          source_branch: "main"
+          target_repo: "zhanzhiwei123456-dotcom/pdfcraft"
+          target_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
