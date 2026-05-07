@@ -37,7 +37,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.FORK_SYNC_PAT }}
         run: |
-          result=$(gh api repos/zhanzhiwi123456-dotcom/gpt2api/merge-upstream -X POST -f branch=main 2>&1) && echo "gpt2api: $result" || echo "gpt2api: FAILED - $result"
+          result=$(gh api repos/zhanzhiwei123456-dotcom/gpt2api/merge-upstream -X POST -f branch=main 2>&1) && echo "gpt2api: $result" || echo "gpt2api: FAILED - $result"
 
       - name: Sync LocalMiniDrama
         env:
