@@ -5,48 +5,54 @@ on:
     - cron: '0 0,12 * * *'
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout fork-sync repo
-        uses: actions/checkout@v4
-
       - name: Sync banana-slides
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
-        with:
-          target_repo_token: ${{ secrets.FORK_SYNC_PAT }}
-          upstream_sync_repo: Anionex/banana-slides
-          upstream_sync_branch: main
-          target_sync_branch: main
-          test_mode: false
+        env:
+          GH_TOKEN: ${{ secrets.FORK_SYNC_PAT }}
+        run: |
+          result=$(gh api repos/zhanzhiwei123456-dotcom/banana-slides/merge-upstream -X POST -f branch=main 2>&1) && echo "banana-slides: $result" || echo "banana-slides: FAILED - $result"
 
       - name: Sync cfnew
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
-        with:
-          target_repo_token: ${{ secrets.FORK_SYNC_PAT }}
-          upstream_sync_repo: byJoey/cfnew
-          upstream_sync_branch: main
-          target_sync_branch: main
-          test_mode: false
+        env:
+          GH_TOKEN: ${{ secrets.FORK_SYNC_PAT }}
+        run: |
+          result=$(gh api repos/zhanzhiwei123456-dotcom/cfnew/merge-upstream -X POST -f branch=main 2>&1) && echo "cfnew: $result" || echo "cfnew: FAILED - $result"
 
       - name: Sync newsnow
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
-        with:
-          target_repo_token: ${{ secrets.FORK_SYNC_PAT }}
-          upstream_sync_repo: ourongxing/newsnow
-          upstream_sync_branch: main
-          target_sync_branch: main
-          test_mode: false
+        env:
+          GH_TOKEN: ${{ secrets.FORK_SYNC_PAT }}
+        run: |
+          result=$(gh api repos/zhanzhiwei123456-dotcom/newsnow/merge-upstream -X POST -f branch=main 2>&1) && echo "newsnow: $result" || echo "newsnow: FAILED - $result"
 
       - name: Sync pdfcraft
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
-        with:
-          target_repo_token: ${{ secrets.FORK_SYNC_PAT }}
-          upstream_sync_repo: PDFCraftTool/pdfcraft
-          upstream_sync_branch: main
-          target_sync_branch: main
-          test_mode: false
+        env:
+          GH_TOKEN: ${{ secrets.FORK_SYNC_PAT }}
+        run: |
+          result=$(gh api repos/zhanzhiwei123456-dotcom/pdfcraft/merge-upstream -X POST -f branch=main 2>&1) && echo "pdfcraft: $result" || echo "pdfcraft: FAILED - $result"
+
+      - name: Sync gpt2api
+        env:
+          GH_TOKEN: ${{ secrets.FORK_SYNC_PAT }}
+        run: |
+          result=$(gh api repos/zhanzhiwi123456-dotcom/gpt2api/merge-upstream -X POST -f branch=main 2>&1) && echo "gpt2api: $result" || echo "gpt2api: FAILED - $result"
+
+      - name: Sync LocalMiniDrama
+        env:
+          GH_TOKEN: ${{ secrets.FORK_SYNC_PAT }}
+        run: |
+          result=$(gh api repos/zhanzhiwei123456-dotcom/LocalMiniDrama/merge-upstream -X POST -f branch=main 2>&1) && echo "LocalMiniDrama: $result" || echo "LocalMiniDrama: FAILED - $result"
+
+      - name: Sync ai-shotlive
+        env:
+          GH_TOKEN: ${{ secrets.FORK_SYNC_PAT }}
+        run: |
+          result=$(gh api repos/zhanzhiwei123456-dotcom/ai-shotlive/merge-upstream -X POST -f branch=main 2>&1) && echo "ai-shotlive: $result" || echo "ai-shotlive: FAILED - $result"
+
+      - name: Sync Yihen-Drama
+        env:
+          GH_TOKEN: ${{ secrets.FORK_SYNC_PAT }}
+        run: |
+          result=$(gh api repos/zhanzhiwei123456-dotcom/Yihen-Drama/merge-upstream -X POST -f branch=main 2>&1) && echo "Yihen-Drama: $result" || echo "Yihen-Drama: FAILED - $result"
