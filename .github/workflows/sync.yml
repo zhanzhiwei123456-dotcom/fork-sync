@@ -18,7 +18,7 @@ jobs:
       - name: Sync banana-slides
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
         with:
-          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          target_repo_token: ${{ secrets.FORK_SYNC_PAT }}
           upstream_sync_repo: Anionex/banana-slides
           upstream_sync_branch: main
           target_sync_branch: main
@@ -27,7 +27,7 @@ jobs:
       - name: Sync cfnew
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
         with:
-          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          target_repo_token: ${{ secrets.FORK_SYNC_PAT }}
           upstream_sync_repo: byJoey/cfnew
           upstream_sync_branch: main
           target_sync_branch: main
@@ -36,7 +36,7 @@ jobs:
       - name: Sync newsnow
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
         with:
-          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          target_repo_token: ${{ secrets.FORK_SYNC_PAT }}
           upstream_sync_repo: ourongxing/newsnow
           upstream_sync_branch: main
           target_sync_branch: main
@@ -45,7 +45,7 @@ jobs:
       - name: Sync pdfcraft
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
         with:
-          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          target_repo_token: ${{ secrets.FORK_SYNC_PAT }}
           upstream_sync_repo: PDFCraftTool/pdfcraft
           upstream_sync_branch: main
           target_sync_branch: main
