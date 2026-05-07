@@ -1,0 +1,52 @@
+name: Sync Fork Repos
+
+on:
+  schedule:
+    - cron: '0 0,12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork-sync repo
+        uses: actions/checkout@v4
+
+      - name: Sync banana-slides
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        with:
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_repo: Anionex/banana-slides
+          upstream_sync_branch: main
+          target_sync_branch: main
+          test_mode: false
+
+      - name: Sync cfnew
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        with:
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_repo: byJoey/cfnew
+          upstream_sync_branch: main
+          target_sync_branch: main
+          test_mode: false
+
+      - name: Sync newsnow
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        with:
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_repo: ourongxing/newsnow
+          upstream_sync_branch: main
+          target_sync_branch: main
+          test_mode: false
+
+      - name: Sync pdfcraft
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        with:
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          upstream_sync_repo: PDFCraftTool/pdfcraft
+          upstream_sync_branch: main
+          target_sync_branch: main
+          test_mode: false
